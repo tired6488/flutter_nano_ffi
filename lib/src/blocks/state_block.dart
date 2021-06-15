@@ -10,6 +10,8 @@ class NanoBlocks {
       String previous, String representative, BigInt balance, String link) {
     assert(accountType == NanoAccountType.BANANO ||
         accountType == NanoAccountType.NANO);
+    assert(accountType == NanoAccountType.TROLLAR ||
+        accountType == NanoAccountType.NANO);
     Uint8List accountBytes =
         NanoHelpers.hexToBytes(NanoAccounts.extractPublicKey(account));
     Uint8List previousBytes = NanoHelpers.hexToBytes(previous.padLeft(64, "0"));

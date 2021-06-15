@@ -11,6 +11,8 @@ class NanoAccounts {
   static String createAccount(int accountType, String publicKey) {
     assert(accountType == NanoAccountType.BANANO ||
         accountType == NanoAccountType.NANO);
+    assert(accountType == NanoAccountType.TROLLAR ||
+        accountType == NanoAccountType.NANO);
     String binaryPubkey = NanoHelpers.hexToBinary(publicKey).padLeft(260, "0");
     String encodedChecksum = calculatedEncodedChecksum(publicKey);
     String encodedPubkey = encoder.encode(binaryPubkey);
@@ -22,6 +24,8 @@ class NanoAccounts {
   static String? findAccountInString(int accountType, String account) {
     assert(accountType == NanoAccountType.BANANO ||
         accountType == NanoAccountType.NANO);
+    assert(accountType == NanoAccountType.TROLLAR ||
+        accountType == NanoAccountType.NANO);
     assert(account != null);
     // Ensure regex match
     RegExp regEx = RegExp(NanoAccountType.getRegex(accountType));
@@ -30,6 +34,8 @@ class NanoAccounts {
 
   static bool isValid(int accountType, String account) {
     assert(accountType == NanoAccountType.BANANO ||
+        accountType == NanoAccountType.NANO);
+    assert(accountType == NanoAccountType.TROLLAR ||
         accountType == NanoAccountType.NANO);
     assert(account != null);
     if (account == null) {
